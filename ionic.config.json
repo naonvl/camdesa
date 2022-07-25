@@ -1,0 +1,7 @@
+{
+  "name": "camdesa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
