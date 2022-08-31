@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Pelaporan
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,31 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Pelaporan</ion-title>
     </ion-toolbar>
   </ion-header>
+  <p>Tekan tombol kamera untuk mengambil foto dan lokasi</p>
+  <div id="cameraPreview" class="cameraPreview">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  </div>
+  <ion-img [src]="image" *ngIf="image"></ion-img>
+  <div *ngIf="image" style="display: flex;align-items: center;justify-content: space-between;background: white; padding: 10px;">
+    <div style="color: black;display:flex;align-items: flex-start;flex-direction: column;">
+      <h5>Lokasi</h5>
+      <span>latitude : {{lat}}</span>
+      <span>longitude : {{lng}}</span>
+    </div>
+    <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" width="170" height="170"
+      frameborder="0" scrolling="no" marginheight="0" marginwidth="0" [src]="sanitize(iframeSrc)"></iframe>
+  </div>
+  <ng-container *ngIf="!cameraActive">
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="camera-outline" (click)="openCamera()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ng-container>
+
+
+
 </ion-content>
